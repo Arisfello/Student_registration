@@ -8,10 +8,12 @@ class WaitlistEntry(Timestamps, models.Model):
     email = models.EmailField(verbose_name='email address',
                               max_length=255,
                               unique=True, )
+    level = models.IntegerField(verbose_name='Class Level', default=1)
     notes = models.TextField()
 
-
     class Meta:
-        verbose_name_plural ='waitlist entries'
+        verbose_name_plural = 'waitlist entries'
 
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
 
